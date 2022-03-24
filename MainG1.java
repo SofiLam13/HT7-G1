@@ -30,14 +30,50 @@ public class MainG1 {
 
         v.imprimir_diccionario(palabras2);
 
+        String s = v.solicitar_oracion();
+
+        System.out.println(s);
+
+        System.out.println();
+
     }
 }
 
 class Vista{
 
+    Scanner scan = new Scanner(System.in);
+
+    private String solicitar_string(String s){
+        String txt = "";
+        boolean continuar = true;
+        try{
+            while(continuar){
+                System.out.print(s);
+                this.scan = new Scanner(System.in);
+                String texto = scan.nextLine();
+                if(texto.equals("")){
+                    System.out.println("\t Error: debe de ingresar un texto valido.");
+                    System.out.println();
+                }
+                else{
+                    txt = texto;
+                    System.out.println("-------------------------------------------------------");
+                    continuar = false;                   
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println("\t Error: debe de ingresar un texto valido.");
+            System.out.println();
+        }
+        return txt;
+    }
+
     public void imprimir_diccionario(ArrayList<Palabra> palabras){
         System.out.println();
+        System.out.println("-------------------------------------------------------");
         System.out.println("DICCIONARIO");
+        System.out.println("-------------------------------------------------------");
         for(int k = 0; k<palabras.size() ;k++){
             System.out.print(palabras.get(k).get_espanol());
             System.out.print(", ");
@@ -45,7 +81,14 @@ class Vista{
             System.out.print(", ");
             System.out.println(palabras.get(k).get_frances());
         }
+        System.out.println("-------------------------------------------------------");
         System.out.println();
+    }
+
+    public String solicitar_oracion(){
+        String s = "Ingrese la oracion a traducir: ";
+        String s2 = solicitar_string(s);
+        return s2;
     }
 }
 
