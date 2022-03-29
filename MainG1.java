@@ -23,7 +23,7 @@ public class MainG1 {
         ArrayList<Palabra> palabras2 = new ArrayList<Palabra>();
 
         for(int k = 0; k<palabras.size() ;k++){
-            String[] separado = palabras.get(k).split(",");
+            String[] separado = palabras.get(k).split("\\,");
             Palabra p = new Palabra(separado[0], separado[1], separado[2]);
             palabras2.add(p);
         }
@@ -86,7 +86,7 @@ class Vista{
     }
 
     public String solicitar_oracion(){
-        String s = "Ingrese la oracion a traducir: ";
+        String s = "Ingrese la oracion a traducir:\n>> ";
         String s2 = solicitar_string(s);
         return s2;
     }

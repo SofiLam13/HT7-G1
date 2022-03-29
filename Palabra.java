@@ -13,8 +13,8 @@ public class Palabra {
     private String frances;
 
     public Palabra(String en, String es, String fran){
-        this.espanol = es;
         this.ingles = en;
+        this.espanol = es;
         this.frances = fran;
     }
 
