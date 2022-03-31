@@ -17,18 +17,18 @@ public class MainG1 {
         FileReader lector = new FileReader();
         Vista v = new Vista();
 
-        ArrayList<String> palabras = lector.leer_archivo();
+        ArrayList<String> palabras_separadas = lector.leer_archivo();
 
         // En lugar de arraylist va el arbol
-        ArrayList<Palabra> palabras2 = new ArrayList<Palabra>();
+        ArrayList<Palabra> palabras = new ArrayList<Palabra>();
 
-        for(int k = 0; k<palabras.size() ;k++){
-            String[] separado = palabras.get(k).split("\\,");
+        for(int k = 0; k<palabras_separadas.size(); k++){
+            String[] separado = palabras_separadas.get(k).split("\\,");
             Palabra p = new Palabra(separado[0], separado[1], separado[2]);
-            palabras2.add(p);
+            palabras.add(p);
         }
 
-        v.imprimir_diccionario(palabras2);
+        v.imprimir_diccionario(palabras);
 
         String s = v.solicitar_oracion();
 
