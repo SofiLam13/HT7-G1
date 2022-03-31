@@ -8,8 +8,6 @@
  */
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.File;
 
 public class MainG1 {
     public static void main(String[] args) {
@@ -59,33 +57,5 @@ public class MainG1 {
 
         v.despedida();
 
-    }
-}
-
-class FileReader{
-
-    public ArrayList<String> leer_archivo(){
-
-        ArrayList<String> palabras = new ArrayList<String>();
-
-        try{
-            String i = "diccionario.txt";
-            File myFile = new File(i);
-            Scanner scan = new Scanner(myFile);
-
-            String s = "";
-
-            while(scan.hasNextLine()){
-                s = scan.nextLine();
-                palabras.add(s.toLowerCase());
-            }
-            scan.close();
-        }
-        catch(Exception e){
-            String s = "FileReader: leer_palabras(): "+e.getMessage();
-            throw new RuntimeException(s);
-        }
-
-        return palabras;
     }
 }
