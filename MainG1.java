@@ -151,22 +151,22 @@ class Vista{
             switch (destino) {
                 //Ingles
                 case "1":
-                    if(!(buscar_palabra(myRoot, oracion[k], origen)==null)){
-                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen).get_ingles();
+                    if(!(buscar_palabra(myRoot, oracion[k], origen, k, true)==null)){
+                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen, k, false).get_ingles();
                     }
                     break;
 
                 //Espanol
                 case "2":
-                    if(!(buscar_palabra(myRoot, oracion[k], origen)==null)){
-                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen).get_espanol();
+                    if(!(buscar_palabra(myRoot, oracion[k], origen, k, true)==null)){
+                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen, k, false).get_espanol();
                     }
                     break;
             
                 //frances
                 default:
-                    if(!(buscar_palabra(myRoot, oracion[k], origen)==null)){
-                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen).get_frances();
+                    if(!(buscar_palabra(myRoot, oracion[k], origen, k, true)==null)){
+                        oracion[k] = buscar_palabra(myRoot, oracion[k], origen, k, false).get_frances();
                     }
                     break;
             }
@@ -181,7 +181,7 @@ class Vista{
         return traduccion;
     }
 
-    private Palabra buscar_palabra(Node myRoot, String s, String origen){
+    private Palabra buscar_palabra(Node myRoot, String s, String origen, int contador_2, boolean imprimir){
 
         Palabra myPalabra = null;
         
@@ -189,33 +189,57 @@ class Vista{
 
         Node myNewRoot = myRoot;
 
+        if(imprimir){
+            System.out.println(" RECORRIDO DE ARBOL No."+(contador_2+1)+" - Objetivo: "+s+" -");
+        }
+
+        int contador = 0;
+
+        if(imprimir){
+            System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+        }
+
         while(continuar){
 
             if((myNewRoot.data.get_espanol().equals(s))||(myNewRoot.data.get_frances().equals(s))||(myNewRoot.data.get_ingles().equals(s))){
                 myPalabra = myNewRoot.data;
-                // System.out.println("f");
+                if(imprimir){
+                    System.out.println("\tPalabra encontrada.");    
+                }
                 continuar = false;
             }
             else{
-                // System.out.println("t");
-
                 switch (origen) {
                     //Ingles
                     case "1":
                         if(myNewRoot.data.get_ingles().compareTo(s)>0){
                             if(!(myNewRoot.left==null)){
                                 myNewRoot = myNewRoot.left;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false;                                
                             }
                         }
                         else{
                             if(!(myNewRoot.right==null)){
                                 myNewRoot = myNewRoot.right;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false; 
                             }
                         }
                         break;
@@ -225,17 +249,31 @@ class Vista{
                         if(myNewRoot.data.get_espanol().compareTo(s)>0){
                             if(!(myNewRoot.left==null)){
                                 myNewRoot = myNewRoot.left;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false; 
                             }
                         }
                         else{
                             if(!(myNewRoot.right==null)){
                                 myNewRoot = myNewRoot.right;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false; 
                             }
                         }
                         break;
@@ -245,17 +283,31 @@ class Vista{
                         if(myNewRoot.data.get_frances().compareTo(s)>0){
                             if(!(myNewRoot.left==null)){
                                 myNewRoot = myNewRoot.left;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false; 
                             }
                         }
                         else{
                             if(!(myNewRoot.right==null)){
                                 myNewRoot = myNewRoot.right;
+                                if(imprimir){
+                                    System.out.println("Nodo "+(contador+1)+": "+(myNewRoot.data.get_ingles()));
+                                }
+                                contador++;
                             }
                             else{
-                                continuar = false;
+                                if(imprimir){
+                                    System.out.println("\tPalabra no encontrada.");
+                                }
+                                continuar = false; 
                             }
                         }
                         break;
@@ -263,11 +315,16 @@ class Vista{
             }
         }
 
+        System.out.println("-------------------------------------------------------");
+
         return myPalabra;
     }
 
     public void imprimir_traduccion(String origen, String traduccion){
+        System.out.println();
+        System.out.println("-------------------------------------------------------");
         System.out.println("- TRADUCCION -");
+        System.out.println("-------------------------------------------------------");
         System.out.println("Oracion de Origen: "+(origen.substring(0, 1).toUpperCase() + origen.substring(1)));
         System.out.println("Traduccion: "+(traduccion.substring(0, 1).toUpperCase() + traduccion.substring(1)));
         System.out.println("-------------------------------------------------------");
