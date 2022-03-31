@@ -15,7 +15,7 @@ class Node{
 
 class BST_Palabra{
 
-    public Node createNewNode(Palabra k){
+    private Node createNewNode(Palabra k){
         Node a = new Node();
         a.data = k;
         a.left = null;
