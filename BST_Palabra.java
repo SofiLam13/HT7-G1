@@ -7,13 +7,7 @@
  * Grupo 1
  */
 
-class Node{
-    Palabra data;
-    Node left;
-    Node right;
-}
-
-class BST_Palabra{
+public class BST_Palabra{
 
     private Node createNewNode(Palabra k){
         Node a = new Node();
