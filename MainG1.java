@@ -19,7 +19,7 @@ public class MainG1 {
 
         ArrayList<String> palabras_separadas = lector.leer_archivo();
 
-        // En lugar de arraylist va el arbol
+        // Arraylist para imprimir diccionario
         ArrayList<Palabra> palabras = new ArrayList<Palabra>();
 
         //ARBOL
