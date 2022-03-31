@@ -127,7 +127,7 @@ public class Vista{
         return traduccion;
     }
 
-    private Palabra buscar_palabra(Node myRoot, String s, String origen, int contador_2, boolean imprimir){
+    public Palabra buscar_palabra(Node myRoot, String s, String origen, int contador_2, boolean imprimir){
 
         Palabra myPalabra = null;
         
