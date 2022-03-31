@@ -53,7 +53,12 @@ public class MainG1 {
             String traduccion = v.traducir(root, s);
             
             v.imprimir_traduccion(origen, traduccion);
+
+            continuar = v.continuar_en_menu();
         }
+
+        v.despedida();
+
     }
 }
 
@@ -327,6 +332,26 @@ class Vista{
         System.out.println("-------------------------------------------------------");
         System.out.println("Oracion de Origen: "+(origen.substring(0, 1).toUpperCase() + origen.substring(1)));
         System.out.println("Traduccion: "+(traduccion.substring(0, 1).toUpperCase() + traduccion.substring(1)));
+        System.out.println("-------------------------------------------------------");
+        System.out.println();
+    }
+
+    public boolean continuar_en_menu(){
+        String s = ">> ";
+        System.out.println("Desea seguir traduciendo?");
+        System.out.println("1. Si");
+        System.out.println("2. No");
+        String s2 = solicitar_string(s, true);
+        boolean continuar = false;
+        if(s2.equals("1")){
+            continuar = true;
+        }
+        return continuar;
+    }
+
+    public void despedida(){
+        System.out.println("Muchas gracias por usar nuestro traductor!");
+        System.out.println("Esperamos verte pronto!!!");
         System.out.println("-------------------------------------------------------");
         System.out.println();
     }
