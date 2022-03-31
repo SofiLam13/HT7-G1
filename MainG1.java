@@ -22,17 +22,34 @@ public class MainG1 {
         // En lugar de arraylist va el arbol
         ArrayList<Palabra> palabras = new ArrayList<Palabra>();
 
+        //ARBOL
+        BST_Palabra myBST = new BST_Palabra();
+        Node root = null;
+
+        //separar traduccion de las palabras y anadir a Binary Search Tree 
         for(int k = 0; k<palabras_separadas.size(); k++){
             String[] separado = palabras_separadas.get(k).split("\\,");
             Palabra p = new Palabra(separado[0], separado[1], separado[2]);
             palabras.add(p);
+
+            root = myBST.insert(root, p);
         }
 
+        //imprimir diccionario
         v.imprimir_diccionario(palabras);
 
+        //solicitar oracion a traducir al usuario
         String s = v.solicitar_oracion();
-
         System.out.println(s);
+        System.out.println();
+
+        //Impresion o retorno de un nodo
+        if(!((root)==null)){
+            System.out.println(root.data.get_ingles());
+        }
+        else{
+            System.out.println("Lo sentimos, Palabra no encontrada...");
+        }
 
         System.out.println();
 
@@ -88,7 +105,7 @@ class Vista{
     public String solicitar_oracion(){
         String s = "Ingrese la oracion a traducir:\n>> ";
         String s2 = solicitar_string(s);
-        return s2;
+        return (s2.toLowerCase());
     }
 }
 
@@ -107,7 +124,7 @@ class FileReader{
 
             while(scan.hasNextLine()){
                 s = scan.nextLine();
-                palabras.add(s);
+                palabras.add(s.toLowerCase());
             }
             scan.close();
         }
