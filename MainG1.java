@@ -35,22 +35,25 @@ public class MainG1 {
             root = myBST.insert(root, p);
         }
 
-        //imprimir diccionario
-        v.imprimir_diccionario(palabras);
+        boolean continuar = true;
 
-        //solicitar oracion a traducir al usuario
-        String[] s = v.solicitar_oracion();
-        String origen = "";
+        while(continuar){
+            //imprimir diccionario
+            v.imprimir_diccionario(palabras);
 
-        for(int k = 0; k<s.length ;k++){
-            // System.out.print(s[k]+" ");
-            origen = origen.concat(s[k]+" ");
+            //solicitar oracion a traducir al usuario
+            String[] s = v.solicitar_oracion();
+            String origen = "";
+
+            for(int k = 0; k<s.length ;k++){
+                // System.out.print(s[k]+" ");
+                origen = origen.concat(s[k]+" ");
+            }
+            
+            String traduccion = v.traducir(root, s);
+            
+            v.imprimir_traduccion(origen, traduccion);
         }
-        
-        String traduccion = v.traducir(root, s);
-        
-        v.imprimir_traduccion(origen, traduccion);
-
     }
 }
 
@@ -114,7 +117,7 @@ class Vista{
     public String[] solicitar_oracion(){
         System.out.println("- Traduccion -");
         System.out.println("Por favor ingresar la oracion con espacios...");
-        String s = "Ingrese la oracion a traducir:\n>> ";
+        String s = "\nIngrese la oracion a traducir:\n>> ";
         String[] s2 = solicitar_string(s, false).toLowerCase().split(" ");
         return s2;
     }
@@ -265,8 +268,9 @@ class Vista{
 
     public void imprimir_traduccion(String origen, String traduccion){
         System.out.println("- TRADUCCION -");
-        System.out.println("Oracion de Origen: "+origen);
-        System.out.println("Traduccion: "+traduccion);
+        System.out.println("Oracion de Origen: "+(origen.substring(0, 1).toUpperCase() + origen.substring(1)));
+        System.out.println("Traduccion: "+(traduccion.substring(0, 1).toUpperCase() + traduccion.substring(1)));
+        System.out.println("-------------------------------------------------------");
         System.out.println();
     }
 
