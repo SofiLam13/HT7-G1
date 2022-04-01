@@ -1,4 +1,11 @@
-
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructura de datos
+ * Hoja de trabajo 7
+ * Daniel Gómez 21429
+ * Sofi Lam 21548
+ * Grupo 1
+ */
 
 import java.util.Scanner;
 import java.util.ArrayList;
